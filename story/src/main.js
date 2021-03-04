@@ -11,6 +11,8 @@ import 'axios';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
+/* to get shortcut off baseURL for post and get on the api */
+axios.defaults.baseURL = "http://localhost:8000/"
 
 /* import Vue from 'vue'
 import App from './App.vue'

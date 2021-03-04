@@ -24,30 +24,51 @@
             </ul>
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
-                </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        >Dropdown</a
-                    >
-                    <div
-                        class="dropdown-menu dropdown-menu-right"
-                        aria-labelledby="navbarDropdown"
-                    >
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+                <template v-if="!check">
+                    <li class="nav-item">
+                        <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
+                    </li>
+                </template>
+                <template v-else>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            >Muhammad</a
+                        >
+                        <div
+                            class="dropdown-menu dropdown-menu-right"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </template>
             </ul>
         </div>
     </nav>
 </template>
+
+<script>
+    import { mapGetters } from 'vuex'
+    
+    export default {
+        computed: {
+            ...mapGetters({
+                check: 'auth/check',
+                user: 'auth/user'
+            })
+        },
+
+        mounted() {
+            // console.log(this.check);
+        },
+    }
+</script>

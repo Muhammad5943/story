@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import { mapActions } from 'vuex'
     
     export default {
         data() {
@@ -38,12 +38,19 @@
         },
 
         methods: {
-            async store () {
-                await axios.get('http://localhost:8000/sanctum/csrf-cookie')
-                await axios.post('http://localhost:8000/login', this.form)
+            ...mapActions({
+                login: 'auth/login'
+            }),
 
-                let user = await axios.get('http://localhost:8000/api/user')
-                console.log(user.data);
+            async store () {
+                await this.login(this.form)
+                this.$router.replace({ name: 'Home' })
+                /* "http://localhost:8000/" defined in main.js */
+                // await axios.get(/* http://localhost:8000/ */'sanctum/csrf-cookie')
+                // await axios.post(/* http://localhost:8000/ */'login', this.form)
+
+                // let user = await axios.get(/* http://localhost:8000/ */'api/user')
+                // console.log(user.data);
             }
         },
     }
