@@ -47,7 +47,7 @@
                             <router-link class="dropdown-item" :to="{ name: 'posts.new' }">New Story</router-link>
                             <router-link class="dropdown-item" :to="{ name: '' }">Another action</router-link>
                             <div class="dropdown-divider"></div>
-                            <router-link class="dropdown-item" :to="{ name: '' }">Something else here</router-link>
+                            <a class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
                         </div>
                     </li>
                 </template>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     
     export default {
         computed: {
@@ -70,5 +70,17 @@
         mounted() {
             // console.log(this.check);
         },
+
+        methods: {
+            ...mapActions({
+                signout: 'auth/signout'
+            }),
+
+            async logout() {
+                await this.signout();
+
+                this.$router.replace({ name: 'auth.login' })
+            }
+        }
     }
 </script>

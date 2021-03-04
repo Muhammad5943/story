@@ -45,6 +45,12 @@ export default {
                 commit('SET_AUTHENTICATED', false)
                 commit('SET_USER', [])
             }
+        },
+
+        async signout({ dispatch }) {
+            await axios.post('logout')
+
+            dispatch('me')
         }
     }
 }
