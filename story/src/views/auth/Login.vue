@@ -53,6 +53,10 @@
                 // console.log(user.data);
             }
         },
+
+        mounted() {
+            document.title = "Login"
+        }
     }
 </script>
 

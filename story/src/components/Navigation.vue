@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                <router-link exact class="nav-link" :to="{ name: 'Home' }">
+                <router-link exact class="nav-link" :to="{ name: 'home' }">
                     Home
                     <span class="sr-only">(curret)</span>
                 </router-link>
@@ -26,7 +26,7 @@
             <ul class="navbar-nav">
                 <template v-if="!check">
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'Login' }">Login</router-link>
+                        <router-link class="nav-link" :to="{ name: 'auth.login' }">Login</router-link>
                     </li>
                 </template>
                 <template v-else>

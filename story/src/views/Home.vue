@@ -9,6 +9,8 @@
 
 export default {
   name: 'Home',
-  
+  mounted() {
+    document.title = "Story Telling"
+  }
 }
 </script>
