@@ -38,7 +38,7 @@
                             role="button"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
-                            >Muhammad</a
+                            >{{ user.name }}</a
                         >
                         <div
                             class="dropdown-menu dropdown-menu-right"

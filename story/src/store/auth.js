@@ -38,9 +38,9 @@ export default {
 
         async me({ commit }) {
             try {
-                let response = await axios.get('api/user')
+                let response = await axios.get('api/me')
                 commit('SET_AUTHENTICATED', true)
-                commit('SET_USER', response.data)
+                commit('SET_USER', response.data.data)
             } catch (e) {
                 commit('SET_AUTHENTICATED', false)
                 commit('SET_USER', [])
