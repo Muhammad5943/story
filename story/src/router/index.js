@@ -18,6 +18,14 @@ const routes = [
     // this generates a separate chunk (Login.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "Login" */ '../views/auth/Login.vue')
+  },
+  {
+    path: '/posts/new',
+    name: 'posts.new',
+    component:  () => import(/* webpackChunkName: "New Post" */ '../views/posts/New.vue'),
+    meta: {
+      auth: true
+    }
   }
 ]
 
@@ -29,6 +37,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (to.meta.auth == true && !store.getters['auth/check']) next('/login')
+  else next() 
+
   if (to.name == 'auth.login' && store.getters['auth/check']) next({ name: 'home' })
   else next()
 })

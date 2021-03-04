@@ -44,10 +44,10 @@
                             class="dropdown-menu dropdown-menu-right"
                             aria-labelledby="navbarDropdown"
                         >
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <router-link class="dropdown-item" :to="{ name: 'posts.new' }">New Story</router-link>
+                            <router-link class="dropdown-item" :to="{ name: '' }">Another action</router-link>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <router-link class="dropdown-item" :to="{ name: '' }">Something else here</router-link>
                         </div>
                     </li>
                 </template>

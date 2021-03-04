@@ -31,8 +31,8 @@
         data() {
             return {
                 form : {
-                    email: 'aji@gmail.com',
-                    password: '123456789'
+                    email: '',
+                    password: ''
                 }
             }
         },
