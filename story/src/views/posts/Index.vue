@@ -14,7 +14,14 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" @click.prevent="loadMore">Load More</button>
+                <button class="btn btn-primary" @click.prevent="loadMore">
+                    <template v-if="loading">
+                        Please Wait ...
+                    </template>
+                    <template v-else>
+                        Load More
+                    </template>
+                </button>
             </div>
         </div>
     </div>
@@ -27,7 +34,8 @@
         data () {
             return {
                 posts: [],
-                perPage: 4
+                perPage: 4,
+                loading: false
             }
         },
 
@@ -40,12 +48,17 @@
                 let response = await axios.get('api/posts', {
                     params: { perPage: this.perPage }
                 })
+                this.loading = false
+
                 this.posts = response.data.data
             },
 
             loadMore() {
                 this.perPage += 5
-                this.fetchPosts()
+                setTimeout(() => {
+                    this.fetchPosts()
+                }, 1000);
+                this.loading = true
             }
         }
     }
