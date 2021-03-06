@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="card mb-3" v-for="post in posts" :key="post.id">
+                <!-- <div class="card mb-3" v-for="post in posts" :key="post.id"> -->
+                <!-- hasMorePagesFunction -->
+                <div class="card mb-3" v-for="post in posts.data" :key="post.id">
                     <div class="card-header">
                         {{ post.title }}
                     </div>
@@ -14,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" @click.prevent="loadMore">
+                <button v-if="posts.hasMorePages" class="btn btn-primary" @click.prevent="loadMore">
                     <template v-if="loading">
                         Please Wait ...
                     </template>
@@ -34,7 +36,7 @@
         data () {
             return {
                 posts: [],
-                perPage: 4,
+                perPage: 50,
                 loading: false
             }
         },
@@ -50,11 +52,14 @@
                 })
                 this.loading = false
 
-                this.posts = response.data.data
+                // this.posts = response.data.data
+
+                /* hasMorePages stop */
+                this.posts = response.data
             },
 
             loadMore() {
-                this.perPage += 5
+                this.perPage += 20
                 setTimeout(() => {
                     this.fetchPosts()
                 }, 1000);
