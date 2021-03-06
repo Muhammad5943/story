@@ -16,10 +16,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                <router-link exact class="nav-link" :to="{ name: 'home' }">
-                    Home
-                    <span class="sr-only">(curret)</span>
-                </router-link>
+                    <router-link exact class="nav-link" :to="{ name: 'home' }">
+                        Home
+                        <span class="sr-only">(curret)</span>
+                    </router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{ name: 'posts.index' }">
+                        Post
+                        <span class="sr-only">(curret)</span>
+                    </router-link>
                 </li>
             </ul>
 
