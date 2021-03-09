@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <h2>{{ post.title }}</h2>
                 <div class="text-secondary">
-                    <router-link to="abc">{{ post.subject.name }}</router-link> &middot;
+                    <router-link :to="`/posts/subjects/${post.subject.slug}`">{{ post.subject.name }}</router-link> &middot;
                     
                     {{ post.published }} by {{ post.author }}
                 </div>
