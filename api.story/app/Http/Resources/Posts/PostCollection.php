@@ -22,6 +22,7 @@ class PostCollection extends ResourceCollection
                     'slug' => $post->slug,
                     'body' => \Str::limit($post->body, 100),
                     'author' => $post->user,
+                    'gravatar' => $post->user->gravatar(),
                     'subject' => $post->subject
                 ];
             }),

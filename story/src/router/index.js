@@ -51,6 +51,14 @@ const routes = [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/posts/:subjectSlug/:postSlug/edit',
+    name: 'posts.edit',
+    component:  () => import(/* webpackChunkName: "Edit Post" */ '../views/posts/Edit.vue'),
+    meta: {
+      auth: true
+    }
   }
 ]
 
