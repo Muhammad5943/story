@@ -6,13 +6,28 @@
             <div class="card mb-3" v-for="post in posts.data" :key="post.id">
                 <div class="card-header d-flex align-item-center justify-content-between">
                     {{ post.title }}
-                    <router-link :to="`/posts/${post.subject.slug}/${post.slug}/edit`">Edit</router-link>
+                    <template v-if="authCheck && post.user_id == user.id">
+                        <router-link :to="`/posts/${post.subject.slug}/${post.slug}/edit`">Edit</router-link>
+                    </template>
                 </div>
                 <div class="card-body">
                     {{ post.body }}
 
-                    <div class="mt-3">
+                    <div class="my-3">
                         <router-link :to="`/posts/${post.subject.slug}/${post.slug}`">Read more!</router-link>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="media align-items-center">
+                            <img class="rounded-circle mr-3" :src="post.gravatar" width="40">
+                            <div class="media">
+                                {{post.author.name}}
+                            </div>
+                        </div>
+
+                        <div class="text-secondary">
+                            {{post.publish}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,6 +45,7 @@
 
 <script>
     import axios from 'axios'
+    import { mapGetters } from 'vuex'
     
     export default {
         props: ['endpoint'],
@@ -40,6 +56,13 @@
                 perPage: 30,
                 loading: false
             }
+        },
+
+        computed: {
+            ...mapGetters({
+                authCheck: 'auth/check',
+                user: 'auth/user'
+            })
         },
 
         mounted() {

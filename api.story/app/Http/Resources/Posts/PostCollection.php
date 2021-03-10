@@ -23,7 +23,9 @@ class PostCollection extends ResourceCollection
                     'body' => \Str::limit($post->body, 100),
                     'author' => $post->user,
                     'gravatar' => $post->user->gravatar(),
-                    'subject' => $post->subject
+                    'user_id' => $post->user_id,
+                    'subject' => $post->subject,
+                    'publish' => $post->created_at->format('d F, Y')
                 ];
             }),
 

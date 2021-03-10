@@ -42,6 +42,13 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
+        if ($post->user_id !== auth()->id()) {
+            abort(404);
+        }
+
+        /* Using PostPolicy */
+        // $this->authorize('update', $post);
+
         $this->requestValidate();
 
         $post->update([
